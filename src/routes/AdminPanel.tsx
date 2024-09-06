@@ -6,6 +6,7 @@ export default function AdminPanel() {
     <main class={style.main}>
       <A href={"/"}>Admin Panel</A>
       <A href={"/menu"}>Menu</A>
+      <A href={"/login"}>Login</A>
     </main>
   );
 }
