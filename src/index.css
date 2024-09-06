@@ -48,7 +48,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  /* Text sizes */
+  --text-xs: 0.75em;
+  --text-sm: 0.875em;
+  --text-base: 1em;
+  --text-lg: 1.125em;
+  --text-xl: 1.25em;
+  --text-2xl: 1.5em;
+  --text-3xl: 1.875em;
+  --text-4xl: 2.25em;
+
   /* Spacing */
+  --space-0: 0.125em;
   --space-1: 0.25em;
   --space-2: 0.5em;
   --space-3: 1em;

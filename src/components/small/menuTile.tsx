@@ -6,11 +6,9 @@ export default function MenuTile(props: {
   link: string;
 }) {
   return (
-    <A href={props.link}>
-      <div class={style.menuTile}>
-        <img src={props.image} alt={props.title} />
-        <h2>{props.title}</h2>
-      </div>
+    <A href={props.link} class={style.menuTile}>
+      <img src={props.image} alt={props.title} />
+      <h2>{props.title}</h2>
     </A>
   );
 }
