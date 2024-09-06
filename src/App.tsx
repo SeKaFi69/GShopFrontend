@@ -4,7 +4,6 @@ import "./App.css";
 import Menu from "./components/Menu";
 import AdminPanel from "./routes/AdminPanel";
 import Login from "./routes/Login";
-import Header from "./components/Header";
 
 function App() {
   return (

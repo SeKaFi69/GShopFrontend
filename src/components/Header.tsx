@@ -8,7 +8,9 @@ export default function Header() {
         <span class={style.g}>G</span>
         <span class={style.s}>Shop</span>
       </h1>
-      <A href="/">Back</A>
+      <A href="/" class={style.backBtn}>
+        Back
+      </A>
     </header>
   );
 }

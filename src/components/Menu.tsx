@@ -6,6 +6,23 @@ export default function Menu() {
   return (
     <main class={style.menu}>
       <Header />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+      <MenuTile title="Zamawianie" image={orderImg} link="/order" />
 
       <MenuTile title="Zamawianie" image={orderImg} link="/order" />
     </main>
