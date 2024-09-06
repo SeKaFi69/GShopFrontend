@@ -8,7 +8,7 @@ export default function MenuTile(props: {
   return (
     <A href={props.link} class={style.menuTile}>
       <img src={props.image} alt={props.title} />
-      <h2>{props.title}</h2>
+      <h1>{props.title}</h1>
     </A>
   );
 }

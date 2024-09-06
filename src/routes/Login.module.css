@@ -49,6 +49,8 @@
       from var(--angle),
       var(--primary),
       var(--secondary),
+      var(--secondary),
+      var(--tertiary),
       var(--tertiary),
       var(--primary)
     );
