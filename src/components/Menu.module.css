@@ -1,5 +1,4 @@
 .menu {
-  top: 5em;
   /* size */
   box-sizing: border-box;
   width: 100%;
@@ -14,7 +13,7 @@
   padding: var(--space-3);
   padding-top: 5em;
   & > * {
-    flex: 1 1 calc(var(--vh) - 3em);
+    flex: 1 1 calc(100vh / 3 - 3em);
   }
 
   /* scroll */
@@ -33,13 +32,11 @@
   place-items: center;
   position: relative;
   /* floor value */
-  height: calc(var(--vh) - 6em);
+  height: calc(100vh / 3 - 2.5em);
+  min-height: 250px;
   text-decoration: none;
-  min-width: fit-content;
-  max-width: 50%;
-  margin: 0 auto;
-  transition: all 0.25s;
 
+  transition: all 0.25s;
   &:hover {
     scale: 1.05;
   }
