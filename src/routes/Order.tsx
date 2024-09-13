@@ -11,7 +11,6 @@ export default function Order() {
         <Header />
         <div class={style.panel}>
           <h2>Panel zamawiania</h2>
-          <button>Zamów</button>
         </div>
         <Inventory />
         <Cart />

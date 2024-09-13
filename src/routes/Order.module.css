@@ -7,6 +7,7 @@
   padding: 1rem;
   place-items: center;
   width: 100%;
+  height: 100%;
   max-width: 900px;
   position: relative;
 
@@ -28,24 +29,4 @@
   border-radius: var(--radius-2);
   background-color: var(--bg2_Dark);
   position: relative;
-
-  & > button {
-    padding: var(--space-2) var(--space-3);
-    font-size: var(--text-base);
-    color: var(--bg0_Light);
-    border-radius: var(--radius-2);
-    background-color: var(--error);
-    transition: all var(--transition_medium);
-    cursor: pointer;
-    &:hover {
-      background-color: var(--warning);
-    }
-    &:disabled {
-      background-color: var(--bg2_Dark);
-      color: var(--bg0_Light);
-    }
-    &:active {
-      background-color: var(--success);
-    }
-  }
 }
