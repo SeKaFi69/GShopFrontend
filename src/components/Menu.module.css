@@ -10,11 +10,8 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-3);
-  padding-top: 5em;
-  & > * {
-    flex: 1 1 calc(100vh / 3 - 3em);
-  }
+  padding: var(--space-4);
+  overflow-x: hidden;
 
   /* scroll */
   overflow-y: auto;
@@ -31,9 +28,10 @@
   display: grid;
   place-items: center;
   position: relative;
-  /* floor value */
+
   height: calc(100vh / 3 - 2.5em);
   min-height: 250px;
+  min-width: 250px;
   text-decoration: none;
 
   transition: all 0.25s;

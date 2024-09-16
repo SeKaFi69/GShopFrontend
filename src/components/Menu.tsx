@@ -7,9 +7,9 @@ export default function Menu() {
     <>
       <Header />
       <main class={style.menu}>
-        <MenuTile title="Zamawianie" image={orderImg} link="/order" />
-        <MenuTile title="Zamawianie" image={orderImg} link="/order" />
-        <MenuTile title="Zamawianie" image={orderImg} link="/order" />
+        <MenuTile title="Zamów na teraz" image={orderImg} link="/order" />
+        <MenuTile title="Zamów na przerwe" image={orderImg} link="/order" />
+        <MenuTile title="Zamów na przerwe" image={orderImg} link="/order" />
       </main>
     </>
   );
