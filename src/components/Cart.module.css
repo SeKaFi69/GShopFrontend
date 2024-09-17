@@ -3,13 +3,16 @@
   background-color: var(--bg1_Dark);
   border-radius: 1em;
   box-shadow: 0 0 1rem var(--primary);
-  padding: var(--space-3);
   width: fit-content;
   max-width: 350px;
   min-height: fit-content;
   z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 
-  top: 5em;
+  top: 50%;
+  translate: 0 -50%;
   & > h2 {
     font-size: var(--text-lg);
     font-weight: 700;
@@ -19,6 +22,9 @@
     width: 100%;
     text-align: center;
     z-index: 3000;
+    background-color: var(--bg0_Dark);
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
   }
   & > ul {
     /* Position */
@@ -27,6 +33,7 @@
     justify-content: center;
     align-items: center;
     gap: var(--space-2);
+    padding: var(--space-3);
     /* Size */
     width: 100%;
 
@@ -49,6 +56,10 @@
       width: 100%;
       max-height: 200px;
       overflow-y: auto;
+
+      & > button {
+        background-color: var(--error);
+      }
     }
 
     & > .total {
@@ -61,11 +72,11 @@
       font-size: var(--text-base);
       color: var(--bg0_Light);
       border-radius: var(--radius-2);
-      background-color: var(--secondary);
+      background-color: var(--primary);
       transition: all var(--transition_medium);
       cursor: pointer;
-
-      &:disabled {
+      font-weight: 700;
+      bac &:disabled {
         background-color: var(--bg2_Dark);
         color: var(--bg0_Light);
       }
@@ -81,7 +92,7 @@
   width: 100vw;
   height: 100vh;
   background-color: var(--bg0_Dark);
-  opacity: 0.5;
+  opacity: 0.9;
   z-index: 200;
   top: 0;
   bottom: 0;

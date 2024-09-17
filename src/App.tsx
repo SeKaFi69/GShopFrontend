@@ -16,7 +16,6 @@ function App() {
 
         <Router>
           <Route path={"/"} component={AdminPanel} />
-          <Route path={"/menu"} component={Menu} />
           <Route path={"/login"} component={Login} />
           <Route path={"/order"} component={Order} />
         </Router>

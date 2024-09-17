@@ -5,8 +5,6 @@ import Header from "../components/Header";
 export default function Login() {
   return (
     <main class={style.main}>
-      <Header />
-
       <h1>Logowanie</h1>
       <label for="content">
         <input id="login" type="text" placeholder="Login" />

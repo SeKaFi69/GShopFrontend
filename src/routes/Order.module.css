@@ -3,7 +3,8 @@
   grid-area: main;
   display: flex;
   flex-wrap: wrap;
-  align-self: flex-start;
+  /* align-self: flex-start; */
+  align-items: center;
   justify-content: center;
   position: relative;
 
@@ -38,15 +39,13 @@
   z-index: 1000;
   & > p {
     position: absolute;
-    padding: var(--space-0);
+    padding: var(--space-1);
     width: 25px;
     aspect-ratio: 1/1;
-    top: 0;
-    right: 0;
-    border-top-right-radius: var(--radius-2);
-    border-bottom-left-radius: var(--radius-2);
-    background-color: var(--bg0_Dark);
-    opacity: 0.2;
+    top: -0.25em;
+    right: -0.25em;
+    border-radius: 50%;
+    background-color: var(--info);
   }
 }
 
@@ -54,7 +53,7 @@
   background-color: var(--bg2_Dark);
 }
 .cartBtnActive {
-  background-color: var(--primary);
+  background-color: var(--tertiary);
   & > p {
     color: var(--bg0_Light);
   }
