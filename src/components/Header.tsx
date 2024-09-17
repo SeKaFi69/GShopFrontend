@@ -1,4 +1,3 @@
-import { A } from "@solidjs/router";
 import style from "./Header.module.css";
 
 export default function Header() {
@@ -8,9 +7,10 @@ export default function Header() {
         <span class={style.g}>G</span>
         <span class={style.s}>Shop</span>
       </h1>
-      <A href="/" class={style.backBtn}>
+
+      <a href="/" class={style.backBtn}>
         Back
-      </A>
+      </a>
     </header>
   );
 }

@@ -1,23 +1,25 @@
 .inventoryContainer {
-  max-height: calc(100vh - 20em);
-  overflow-y: auto;
-  box-shadow: 0 0 1rem var(--primary);
+  /* Position */
   grid-area: main;
-  position: relative;
-  gap: 1em;
+
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  list-style: none;
-  padding: var(--space-3);
-  flex-wrap: wrap;
-  list-style: none;
+  position: relative;
+  gap: var(--space-2);
+
+  /* Size */
   width: 100%;
   min-width: 200px;
+  padding: var(--space-3);
+
+  /* Cosmetics */
+  overflow-y: auto;
+  box-shadow: 0 0 1rem var(--primary);
+  list-style: none;
   background-color: var(--bg1_Dark);
   border-radius: 1em;
-  position: relative;
-  /* scroll border radius */
 
   & > input {
     width: 100%;
@@ -26,10 +28,11 @@
   & > li {
     position: relative;
     aspect-ratio: 1/1;
-    min-width: 125px;
+    width: 50%;
+    max-width: calc(25% - 2em);
     gap: 0 !important;
     display: flex;
-    gap: 1rem;
+    gap: var(--space-2);
     padding-inline: var(--space-4);
     background-color: var(--bg2_Dark);
     border-radius: var(--radius-2);
@@ -58,6 +61,10 @@
       display: grid;
       place-items: center;
       font-weight: bolder;
+    }
+
+    @media (max-width: 600px) {
+      max-width: calc(50% - 0.25em);
     }
   }
 

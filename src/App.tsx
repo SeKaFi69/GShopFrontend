@@ -5,16 +5,22 @@ import Menu from "./components/Menu";
 import AdminPanel from "./routes/AdminPanel";
 import Login from "./routes/Login";
 import Order from "./routes/Order";
+import Header from "./components/Header";
+import { AppProvider } from "./appContext";
 
 function App() {
   return (
     <>
-      <Router>
-        <Route path={"/"} component={AdminPanel} />
-        <Route path={"/menu"} component={Menu} />
-        <Route path={"/login"} component={Login} />
-        <Route path={"/order"} component={Order} />
-      </Router>
+      <AppProvider>
+        <Header />
+
+        <Router>
+          <Route path={"/"} component={AdminPanel} />
+          <Route path={"/menu"} component={Menu} />
+          <Route path={"/login"} component={Login} />
+          <Route path={"/order"} component={Order} />
+        </Router>
+      </AppProvider>
     </>
   );
 }
