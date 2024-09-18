@@ -1,0 +1,32 @@
+.switch {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  height: 2em;
+  aspect-ratio: 2/1;
+  border-radius: 2em;
+  background-color: var(--primary);
+  transition: all 0.75s;
+  position: relative;
+  outline: 1px solid;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: inherit;
+    box-sizing: border-box;
+    background: var(--bg0_Light);
+    transition: all 0.75s;
+  }
+  &:checked {
+    background-color: var(--error);
+  }
+  &:checked::before {
+    translate: 102%;
+  }
+}

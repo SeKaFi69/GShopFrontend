@@ -11,6 +11,7 @@ export type Product = {
   name: string;
   price: number;
   amount?: number;
+  isHeatable?: boolean;
 };
 
 type appContext = {
@@ -32,14 +33,21 @@ type appContext = {
 export function AppProvider(props: { children: any }) {
   const [inventory, setInventory] = createSignal<Product[]>([]);
   const [cart, setCart] = createSignal<Product[]>([]);
-  const [showCart, setShowCart] = createSignal(false);
+  const [showCart, setShowCart] = createSignal(true);
   const [itemCount, setItemCount] = createSignal(0);
 
   return (
     <appContext.Provider
       value={{
         inventory: { inventory, setInventory },
-        cart: { cart, setCart, showCart, setShowCart, itemCount, setItemCount },
+        cart: {
+          cart,
+          setCart,
+          showCart,
+          setShowCart,
+          itemCount,
+          setItemCount,
+        },
       }}
       {...props}
     />

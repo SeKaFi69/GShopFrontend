@@ -8,7 +8,7 @@ export default function Inventory() {
   const appContext = useAppContext()!;
 
   appContext.inventory.setInventory([
-    { name: "Mleko", price: 2, amount: 10 },
+    { name: "Mleko", isHeatable: true, price: 2, amount: 10 },
     { name: "Mleko2", price: 2, amount: 10 },
     { name: "Mleko3", price: 2, amount: 10 },
     { name: "Mleko4", price: 2, amount: 10 },
@@ -84,7 +84,7 @@ export default function Inventory() {
   };
   return (
     <ol class={style.inventoryContainer}>
-      <input type="text" placeholder="Wyszukaj produkt" />
+      <input type="search" placeholder="Wyszukaj produkt" />
       <Show when={appContext.inventory.inventory()}>
         {appContext.inventory.inventory().map((product: Product) => (
           <li>
@@ -95,7 +95,12 @@ export default function Inventory() {
             <div class={style.buttonContainer}>
               {/* TODO */}
               {/* show when product in cart */}
-              <Show when={true}>
+              <Show
+                when={appContext.cart
+                  .cart()
+                  .filter((cartProduct) => cartProduct.name === product.name)
+                  .find((cartProduct) => (cartProduct.amount ?? 0) > 0)}
+              >
                 <button
                   type="button"
                   title="Usuń"

@@ -2,6 +2,7 @@ import Inventory from "../components/Inventory";
 import style from "./Order.module.css";
 import Cart from "../components/Cart";
 import CartBtn from "../components/small/cartBtn";
+import OrderDetails from "../components/OrderDetails";
 
 export default function Order() {
   // TODO
@@ -11,7 +12,11 @@ export default function Order() {
         <h2>Panel zamawiania</h2>
       </div>
       <Inventory />
-      <Cart />
+      <div class={style.finilize}>
+        <OrderDetails />
+        <Cart />
+      </div>
+
       <CartBtn />
     </main>
   );

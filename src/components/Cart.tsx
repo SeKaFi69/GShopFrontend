@@ -2,6 +2,7 @@ import { Show, createEffect, createSignal } from "solid-js";
 import { useAppContext } from "../appContext";
 import style from "./Cart.module.css";
 import type { Product } from "../appContext";
+import Slider from "./small/slider";
 
 export default function Cart() {
   const appContext = useAppContext()!;
@@ -36,13 +37,13 @@ export default function Cart() {
     });
   };
   return (
-    <Show when={appContext.cart.showCart()}>
-      <>
+    <>
+      <Show when={appContext.cart.showCart()}>
         <span
           class={style.overlay}
           onclick={() => appContext.cart.setShowCart(false)}
         />
-        <div class={style.cartContainer}>
+        <form class={style.cartContainer}>
           <h2>Koszyk</h2>
           <ul>
             <Show
@@ -51,10 +52,12 @@ export default function Cart() {
             >
               {appContext?.cart.cart().map((product: Product) => (
                 <li>
-                  <span>
-                    {product.name} - {product.price} zł
-                  </span>
+                  <span>{product.name}</span>
+                  <span>{product.price}zł</span>
                   <span>{product.amount}</span>
+                  <Show when={product.isHeatable}>
+                    <Slider />
+                  </Show>
                   <button
                     type="button"
                     title="Usuń"
@@ -67,11 +70,11 @@ export default function Cart() {
             </Show>
             <Show when={total() !== 0}>
               <span class={style.total}>Total: {`${total()}zł`}</span>
-              <button type="button">Zamów</button>
+              <button type="submit">Zamów</button>
             </Show>
           </ul>
-        </div>
-      </>
-    </Show>
+        </form>
+      </Show>
+    </>
   );
 }

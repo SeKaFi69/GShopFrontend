@@ -1,7 +1,5 @@
 import { Router, Route } from "@solidjs/router";
 // import Home from "./routes/Home";
-import "./App.css";
-import Menu from "./components/Menu";
 import AdminPanel from "./routes/AdminPanel";
 import Login from "./routes/Login";
 import Order from "./routes/Order";

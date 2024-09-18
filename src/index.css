@@ -123,10 +123,6 @@ input {
 
   transition: all var(--transition_medium);
 
-  &:focus {
-    background-color: var(--bg3_Dark);
-  }
-
   &::placeholder {
     color: var(--bg0_Light);
     text-align: center;

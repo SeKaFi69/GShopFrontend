@@ -1,6 +1,5 @@
 import { Show } from "solid-js";
 import style from "./Login.module.css";
-import Header from "../components/Header";
 
 export default function Login() {
   return (
