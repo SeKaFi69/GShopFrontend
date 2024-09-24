@@ -8,7 +8,7 @@ export default function RecivedOrder() {
   orderTime.setHours(10, 25, 0, 0);
 
   const morning = new Date();
-  morning.setHours(10, 24, 0, 0);
+  morning.setHours(10, 5, 0, 0);
 
   const [timeleft, _setTimeleft] = createSignal(
     (orderTime.getTime() - morning.getTime()) / 60000

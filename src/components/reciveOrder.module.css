@@ -31,6 +31,9 @@
     --timeCounter: hsl(var(--timeHue), 100%, 50%);
     background-color: var(--timeCounter);
     text-align: center;
+    font-size: var(--text-lg);
+    color: var(--bg3_Dark);
+    font-weight: 700;
   }
   & > .total,
   & > .payment {
