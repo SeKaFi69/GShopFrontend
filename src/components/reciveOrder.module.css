@@ -3,6 +3,8 @@
   background-color: var(--bg2_Dark);
   width: fit-content;
   height: fit-content;
+  max-height: 100%;
+  overflow: auto;
   max-width: 300px;
   padding: var(--space-2);
   border-radius: var(--radius-2);
@@ -51,7 +53,7 @@
   & > ol {
     display: flex;
     flex-direction: column;
-    gap: var(--space-0);
+    gap: var(--space-2);
     width: 100%;
 
     & > li {
@@ -62,6 +64,7 @@
       padding: var(--space-2);
       background-color: var(--bg3_Dark);
       border-radius: var(--radius-2);
+      width: 100%;
       & > svg {
         width: 1.5em;
         height: 1.5em;
