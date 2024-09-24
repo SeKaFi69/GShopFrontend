@@ -8,18 +8,16 @@ export default function RecivedOrder() {
   orderTime.setHours(10, 25, 0, 0);
 
   const morning = new Date();
-  morning.setHours(10, 15, 0, 0);
+  morning.setHours(10, 24, 0, 0);
 
   const [timeleft, _setTimeleft] = createSignal(
-    orderTime.getMinutes() +
-      orderTime.getHours() * 60 -
-      (morning.getHours() * 60 + morning.getMinutes())
+    (orderTime.getTime() - morning.getTime()) / 60000
   );
   console.log(timeleft());
 
   const maxHue = 144;
   const timeleftMax = 60;
-  if (timeleft() <= 3600 && timeleft() > 0)
+  if (timeleft() <= 60 && timeleft() > 0)
     setTimeCounterHue((maxHue / timeleftMax) * timeleft());
   else setTimeCounterHue(200);
 
