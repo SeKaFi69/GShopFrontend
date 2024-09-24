@@ -1,5 +1,9 @@
-import { createSignal } from "solid-js";
+import { Show, createSignal } from "solid-js";
 import style from "./reciveOrder.module.css";
+import {
+  FaSolidTemperatureArrowDown,
+  FaSolidTemperatureArrowUp,
+} from "solid-icons/fa";
 
 export default function RecivedOrder() {
   const [timeCounterHue, setTimeCounterHue] = createSignal(0);
@@ -33,9 +37,24 @@ export default function RecivedOrder() {
       </span>
 
       <ol>
-        <li>produkt 1</li>
-        <li>produkt 2</li>
-        <li>produkt 3</li>
+        <li>
+          <p>product name</p>
+          <Show
+            when={true}
+            fallback={<FaSolidTemperatureArrowDown class={style.cold} />}
+          >
+            <FaSolidTemperatureArrowUp class={style.hot} />
+          </Show>
+        </li>
+        <li>
+          <p>product name</p>
+          <Show
+            when={false}
+            fallback={<FaSolidTemperatureArrowDown class={style.cold} />}
+          >
+            <FaSolidTemperatureArrowUp class={style.hot} />
+          </Show>
+        </li>
       </ol>
       <span class={style.total}>total price</span>
       <span class={style.payment}>type of payment</span>
