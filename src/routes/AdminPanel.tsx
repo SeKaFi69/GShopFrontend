@@ -1,12 +1,21 @@
-import { A } from "@solidjs/router";
+import { createSignal } from "solid-js";
+import RecivedOrder from "../components/recivedOrder";
 import style from "./AdminPanel.module.css";
 
 export default function AdminPanel() {
+  const [orderTime, _setOrderTime] = createSignal(
+    new Date().toLocaleTimeString()
+  );
+
+  console.log(orderTime());
   return (
-    <main class={style.main}>
-      <A href={"/"}>Admin Panel</A>
-      <A href={"/order"}>Zamów</A>
-      <A href={"/login"}>Login</A>
+    <main class={style.adminContainer}>
+      <RecivedOrder />
+      <RecivedOrder />
+      <RecivedOrder />
+      <RecivedOrder />
+      <RecivedOrder />
+      <RecivedOrder />
     </main>
   );
 }

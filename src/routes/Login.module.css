@@ -45,6 +45,8 @@
     content: "";
     inset: -0.25em;
     position: absolute;
+    height: 100%;
+    width: 100%;
     background-image: conic-gradient(
       from var(--angle),
       var(--primary),

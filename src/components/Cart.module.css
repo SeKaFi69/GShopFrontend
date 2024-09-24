@@ -2,7 +2,6 @@
   display: flex;
   background-color: var(--bg1_Dark);
   border-radius: 1em;
-  box-shadow: 0 0 1rem var(--primary);
   width: fit-content;
   max-width: 350px;
   min-height: fit-content;
@@ -74,10 +73,7 @@
       transition: all var(--transition_medium);
       cursor: pointer;
       font-weight: 700;
-      bac &:disabled {
-        background-color: var(--bg2_Dark);
-        color: var(--bg0_Light);
-      }
+
       &:active {
         background-color: var(--primary);
       }

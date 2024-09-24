@@ -3,13 +3,14 @@ import { useAppContext } from "../appContext";
 import type { Product } from "../appContext";
 import style from "./Inventory.module.css";
 import orderImg from "../assets/Order.png";
-
+import { handleRemove } from "./Cart";
+import { BiRegularPlus, BiRegularMinus } from "solid-icons/bi";
 export default function Inventory() {
   const appContext = useAppContext()!;
 
   appContext.inventory.setInventory([
     { name: "Mleko", isHeatable: true, price: 2, amount: 10 },
-    { name: "Mleko2", price: 2, amount: 10 },
+    { name: "Mleko2", price: 2.0, amount: 10 },
     { name: "Mleko3", price: 2, amount: 10 },
     { name: "Mleko4", price: 2, amount: 10 },
     { name: "Mleko5", price: 2, amount: 10 },
@@ -53,7 +54,7 @@ export default function Inventory() {
     { name: "Pomidor10", price: 2, amount: 10 },
   ]);
 
-  const handleAdd = (name: string) => {
+  function handleAdd(name: string) {
     return () => {
       appContext.cart.setItemCount(appContext.cart.itemCount() + 1);
       console.log(appContext.cart.itemCount());
@@ -81,20 +82,17 @@ export default function Inventory() {
         }
       }
     };
-  };
+  }
   return (
     <ol class={style.inventoryContainer}>
-      <input type="search" placeholder="Wyszukaj produkt" />
       <Show when={appContext.inventory.inventory()}>
         {appContext.inventory.inventory().map((product: Product) => (
           <li>
             <img src={orderImg} alt={product.name} />
 
-            <span class={style.name}>{product.name} </span>
-            <span class={style.price}> {product.price} zł</span>
+            <span class={style.name}>{product.name}</span>
+            <span class={style.price}> {product.price.toPrecision(3)}</span>
             <div class={style.buttonContainer}>
-              {/* TODO */}
-              {/* show when product in cart */}
               <Show
                 when={appContext.cart
                   .cart()
@@ -104,9 +102,9 @@ export default function Inventory() {
                 <button
                   type="button"
                   title="Usuń"
-                  onclick={handleAdd(product.name)}
+                  onClick={() => handleRemove(appContext, product.name)}
                 >
-                  -
+                  <BiRegularMinus />
                 </button>
               </Show>
               <button
@@ -114,7 +112,7 @@ export default function Inventory() {
                 title="Dodaj"
                 onclick={handleAdd(product.name)}
               >
-                +
+                <BiRegularPlus />
               </button>
             </div>
           </li>

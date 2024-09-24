@@ -6,7 +6,7 @@
   height: 2em;
   aspect-ratio: 2/1;
   border-radius: 2em;
-  background-color: var(--primary);
+  background-color: var(--info);
   transition: all 0.75s;
   position: relative;
   outline: 1px solid;
@@ -28,5 +28,23 @@
   }
   &:checked::before {
     translate: 102%;
+  }
+}
+.switchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  & > svg {
+    position: absolute;
+    font-size: var(--text-lg);
+    &:first-child {
+      left: 5px;
+      z-index: 2000;
+    }
+    &:last-child {
+      right: 5px;
+    }
   }
 }

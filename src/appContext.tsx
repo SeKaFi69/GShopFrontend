@@ -14,7 +14,7 @@ export type Product = {
   isHeatable?: boolean;
 };
 
-type appContext = {
+export type appContext = {
   inventory: {
     setInventory: Setter<Product[]>;
     inventory: Accessor<Product[]>;
@@ -33,7 +33,7 @@ type appContext = {
 export function AppProvider(props: { children: any }) {
   const [inventory, setInventory] = createSignal<Product[]>([]);
   const [cart, setCart] = createSignal<Product[]>([]);
-  const [showCart, setShowCart] = createSignal(true);
+  const [showCart, setShowCart] = createSignal(false);
   const [itemCount, setItemCount] = createSignal(0);
 
   return (

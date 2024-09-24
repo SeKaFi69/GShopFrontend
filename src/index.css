@@ -4,6 +4,7 @@
   -moz-box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Protest Guerrilla", system-ui;
 }
 
 #root {
@@ -21,17 +22,24 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #131313;
-  --primary: #00f7d6;
-  --secondary: #905aca;
-  --tertiary: #06c289;
+  --primary: #f71000;
+  --secondary: #d17e12;
+  --tertiary: #8d5aeb;
 
   --error: #ff0033;
   --warning: #ffcc00;
   --success: #00ff66;
   --info: #00ccff;
 
-  --hue: 0;
+  /* --timeHue: 144; */
 
+  --hue: 0;
+  /* Gradients */
+  --primaryGradient: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    var(--secondary) 100%
+  );
   /* Light Mode */
   --bg0_Light: hsl(var(--hue), 0%, 97%);
   --bg1_Light: hsl(var(--hue), 0%, 87%);
@@ -105,7 +113,7 @@ button {
   color: var(--bg0_Light);
   border-radius: var(--radius-2);
 
-  background-color: var(--bg2_Dark);
+  /* background-color: var(--bg2_Dark); */
 
   transition: all var(--transition_medium);
 }

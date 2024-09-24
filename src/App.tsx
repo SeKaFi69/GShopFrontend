@@ -1,10 +1,11 @@
 import { Router, Route } from "@solidjs/router";
 // import Home from "./routes/Home";
-import AdminPanel from "./routes/AdminPanel";
+import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Order from "./routes/Order";
 import Header from "./components/Header";
 import { AppProvider } from "./appContext";
+import AdminPanel from "./routes/AdminPanel";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Header />
 
         <Router>
-          <Route path={"/"} component={AdminPanel} />
+          <Route path={"/"} component={Home} />
+          <Route path={"/adminPanel"} component={AdminPanel} />
           <Route path={"/login"} component={Login} />
           <Route path={"/order"} component={Order} />
         </Router>

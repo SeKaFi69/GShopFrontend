@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@solid-primitives/date": "^2.0.23",
     "@solidjs/router": "^0.14.3",
     "@stylexjs/stylex": "^0.7.5",
+    "solid-icons": "^1.1.0",
     "solid-js": "^1.8.20"
   },
   "devDependencies": {

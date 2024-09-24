@@ -1,8 +1,26 @@
 import { Show, createEffect, createSignal } from "solid-js";
 import { useAppContext } from "../appContext";
 import style from "./Cart.module.css";
-import type { Product } from "../appContext";
+import type { Product, appContext } from "../appContext";
 import Slider from "./small/slider";
+
+export function handleRemove(appContext: appContext, name: string) {
+  appContext.cart.setItemCount(appContext.cart.itemCount() - 1);
+
+  const currentProductIndex = appContext?.cart
+    .cart()
+    .findIndex((v) => v.name === name);
+  if (currentProductIndex === -1) {
+    return;
+  }
+  appContext?.cart.setCart((prev) => {
+    prev[currentProductIndex].amount! -= 1;
+    if (prev[currentProductIndex].amount! <= 0) {
+      prev.splice(currentProductIndex, 1);
+    }
+    return [...prev];
+  });
+}
 
 export default function Cart() {
   const appContext = useAppContext()!;
@@ -18,24 +36,6 @@ export default function Cart() {
     setTotal(totalTemp);
   });
 
-  const handleRemove = (name: string) => {
-    appContext.cart.setItemCount(appContext.cart.itemCount() - 1);
-    console.log(appContext.cart.itemCount());
-
-    const currentProductIndex = appContext?.cart
-      .cart()
-      .findIndex((v) => v.name === name);
-    if (currentProductIndex === -1) {
-      return;
-    }
-    appContext?.cart.setCart((prev) => {
-      prev[currentProductIndex].amount! -= 1;
-      if (prev[currentProductIndex].amount! <= 0) {
-        prev.splice(currentProductIndex, 1);
-      }
-      return [...prev];
-    });
-  };
   return (
     <>
       <Show when={appContext.cart.showCart()}>
@@ -61,7 +61,7 @@ export default function Cart() {
                   <button
                     type="button"
                     title="Usuń"
-                    onClick={() => handleRemove(product.name)}
+                    onClick={() => handleRemove(appContext, product.name)}
                   >
                     Usuń
                   </button>

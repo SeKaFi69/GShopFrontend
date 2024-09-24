@@ -1,6 +1,7 @@
 import { Show } from "solid-js";
 import { useAppContext } from "../../appContext";
 import style from "../../routes/Order.module.css";
+import { RiFinanceShoppingBasketLine } from "solid-icons/ri";
 
 export default function CartBtn() {
   const appContext = useAppContext()!;
@@ -15,7 +16,7 @@ export default function CartBtn() {
         appContext.cart.setShowCart(!appContext.cart.showCart());
       }}
     >
-      Cart
+      <RiFinanceShoppingBasketLine />
       <Show when={appContext.cart.itemCount() !== 0}>
         <p class={style.itemCount}>{appContext.cart.itemCount()}</p>
       </Show>

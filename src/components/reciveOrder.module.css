@@ -1,0 +1,45 @@
+.recivedOrder {
+  position: relative;
+  background-color: var(--bg2_Dark);
+  width: fit-content;
+  height: fit-content;
+  padding: var(--space-2);
+  border-radius: var(--radius-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+
+  & > h2 {
+    max-width: 80%;
+    height: 1.75em;
+    overflow: hidden;
+    word-break: break-all;
+    /* TODO kropeczki  */
+  }
+  & > ol {
+    list-style: none;
+    width: 100%;
+  }
+  & > p {
+    color: var(--tertiary);
+    width: 10%;
+  }
+  & > span {
+    width: 100%;
+  }
+  & > .time {
+    --timeCounter: hsl(var(--timeHue), 100%, 50%);
+    background-color: var(--timeCounter);
+    text-align: center;
+  }
+  & > .total,
+  & > .payment {
+    width: calc(50% - 0.25em);
+  }
+  & > .total {
+    color: var(--primary);
+  }
+  & > .payment {
+    color: var(--secondary);
+  }
+}
