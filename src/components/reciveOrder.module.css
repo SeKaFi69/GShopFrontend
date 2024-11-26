@@ -3,8 +3,7 @@
   background-color: var(--bg2_Dark);
   width: fit-content;
   height: fit-content;
-  max-height: 100%;
-  overflow: auto;
+
   max-width: 300px;
   padding: var(--space-2);
   border-radius: var(--radius-2);

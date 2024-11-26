@@ -12,7 +12,6 @@ export default function Order() {
     <main class={style.main}>
       <div class={style.panel}>
         <h2>Panel zamawiania</h2>
-        <CartBtn />
         <SearchProduct />
         <div class={style.tagContainer}>
           <Tag />

@@ -7,6 +7,7 @@ export default function AdminPanel() {
       <A href={"/adminPanel"}>Admin Panel</A>
       <A href={"/order"}>Zamów</A>
       <A href={"/login"}>Login</A>
+      <A href={"/adminPanel/addProduct"}>Dodaj produkt</A>
     </main>
   );
 }

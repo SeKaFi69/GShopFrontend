@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package product.routes;
+import "proto/product/product.proto";
+
+message CreateProductRequest{
+    repeated Product products = 1;
+}
+message CreateProductResponse{
+    repeated int64 productIds = 1;
+}
+
+message GetProductResponse{
+    Product product = 1;
+}
+
+message GetProductsRequest{
+    repeated int64 productIds = 1;
+}
+message GetProductsResponse{
+    repeated Product product = 1;
+}

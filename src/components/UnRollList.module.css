@@ -1,0 +1,63 @@
+.unroll {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  & > ol {
+    list-style: none;
+    position: fixed;
+    top: 4em;
+    right: -300px;
+    transition: all 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    justify-content: flex-start;
+    padding-top: 1.5em;
+    align-items: center;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg1_Dark);
+      opacity: 0.75;
+      top: 0;
+      position: absolute;
+      z-index: -1;
+      padding: 1em;
+    }
+    & > li {
+      width: 100%;
+    }
+    & > li > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-0);
+      background-color: var(--bg3_Dark);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-lg);
+      color: var(--bg0_Light);
+      border-radius: var(--radius-2);
+      transition: all var(--transition_medium);
+
+      &:hover {
+        background-color: var(--bg4_Dark);
+      }
+    }
+  }
+  & > .unrollBtn {
+    font-size: var(--text-xl);
+    background-color: var(--bg3_Dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2em;
+    aspect-ratio: 1/1;
+  }
+  & > .active {
+    right: 0.5em;
+  }
+  .backBtn {
+  }
+}

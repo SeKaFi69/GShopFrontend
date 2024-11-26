@@ -1,6 +1,7 @@
 import style from "./tag.module.css";
 
 export default function tag() {
+  const tags = () => {};
   return (
     <>
       <button type="button" class={style.tag}>
