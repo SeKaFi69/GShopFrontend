@@ -2,6 +2,7 @@ import { create, toBinary } from "@bufbuild/protobuf";
 import { ProductSchema } from "../proto/proto/product/product_pb";
 import { CreateProductRequestSchema } from "../proto/proto/product/routes_pb";
 import style from "./AddProduct.module.css";
+import Tag from "../components/small/tag";
 export default function AddProduct() {
   fetch("loc");
   return (
@@ -13,10 +14,10 @@ export default function AddProduct() {
         const formData = new FormData();
         const name = formData.get("name")?.toString();
         const description = formData.get("description")?.toString();
-        const imageId = BigInt(formData.get("image"));
-        if ((imageId = null)) {
-          throw "Image aa";
-        }
+        // BigInt imageId = BigInt(formData.get("image")?.toString());
+        // if ((imageId = null)) {
+        //   throw "Image aa";
+        // }
         const p = formData.get("price")?.toString();
         if (p == null) {
           throw "price aa";
@@ -73,7 +74,9 @@ export default function AddProduct() {
         Cena
         <input type="text" name="price" title="Cena [zł]" required />
       </label>
-      <label for="Tags">Tags</label>
+      <div class={style.tagContainer}>
+        <Tag />
+      </div>
       <button type="submit" title="Dodaj produkt">
         Dodaj
       </button>
