@@ -39,6 +39,10 @@
       & > img {
         filter: grayscale(0%);
       }
+      & > .tag {
+        height: 3.25em;
+        transition: all 0.5s;
+      }
     }
 
     & > img {
@@ -56,23 +60,56 @@
       display: grid;
       place-items: center;
       background-color: var(--bg2_Dark);
-      bottom: 2px;
-      right: 2px;
-      height: 2.25em;
+      top: 0;
+      right: 0;
+      height: fit-content;
+      padding: var(--space-1);
       aspect-ratio: 1/1;
-      border-radius: 50%;
-      font-size: var(--text-base);
+      border-bottom-left-radius: 50%;
+      font-size: var(--text-sm);
       z-index: 200;
+    }
+    & > .tag {
+      position: absolute;
+      flex-wrap: wrap;
+      opacity: 1;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      height: 1.5em;
+      gap: var(--space-1);
+      top: 2px;
+      left: 2px;
+      width: calc(100% - 2em);
+      overflow: hidden;
+      transition: 0.5s all;
+
+      & > li {
+        width: fit-content;
+        height: fit-content;
+
+        background-color: var(--bg4);
+        font-size: 0.75em;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        border-radius: 1em;
+
+        &:disabled,
+        &.disabled {
+          background-color: var(--tertiary);
+        }
+      }
     }
     .name {
       width: 100%;
       text-align: left;
       z-index: 200;
-      font-size: var(--text-lg);
+      font-size: var(--text-base);
       background-color: var(--secondary);
       padding: var(--space-1);
       border-bottom-left-radius: inherit;
       border-bottom-right-radius: inherit;
+      position: relative;
     }
     & > .buttonContainer {
       position: absolute;
@@ -85,27 +122,23 @@
       z-index: 1000;
       background-color: none;
 
-      :first-child {
-        background-color: var(--error);
-      }
-      :last-child {
-        background-color: var(--tertiary);
-      }
-
       & > button {
         display: grid;
         place-items: center;
         font-weight: bolder;
-        font-size: var(--text-2xl);
+        font-size: var(--text-xl);
         padding: 0;
         width: 1.5em;
         height: 1.5em;
         color: var(--bg1_Light);
+        background-color: var(--tertiary);
+
         border-radius: 50%;
 
         & > svg {
           width: 100%;
           height: 100%;
+          border-radius: 50%;
         }
       }
     }

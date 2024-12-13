@@ -1,10 +1,11 @@
 .tag {
+  width: fit-content;
+
   background-color: var(--tertiary);
-  font-size: var(--text-sm);
+  font-size: 0.85em;
   padding: var(--space-2) var(--space-3);
-  font-weight: 700;
-  &:disabled {
+  &:disabled,
+  &.disabled {
     background-color: var(--bg4_Dark);
-    font-weight: 400;
   }
 }

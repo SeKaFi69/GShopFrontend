@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package tags.routes;
+import "proto/tags/productTag.proto";
+
+message GetTagsResponse{
+    repeated ProductTag tags = 1;
+}

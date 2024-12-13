@@ -20,3 +20,7 @@ message GetProductsRequest{
 message GetProductsResponse{
     repeated Product product = 1;
 }
+
+message DeleteProductsRequest {
+    repeated int64 productIds = 1;
+}

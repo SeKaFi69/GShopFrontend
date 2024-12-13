@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package stock.routes;
+
+message GetStockRequest{
+    optional int64 after = 1; //Snowflake
+    optional uint32 limit = 2;
+}

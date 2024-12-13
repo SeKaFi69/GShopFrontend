@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package image.routes;
+
+
+message CreateImageResponse{
+    int64 image_id = 1;
+}
+
+message DeleteImageRequest{
+    int64 image_id = 1;
+
+}

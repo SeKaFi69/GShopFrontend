@@ -1,14 +1,22 @@
-import { CreateProductRequestSchema } from "../../proto/proto/product/routes_pb";
 import style from "./tag.module.css";
-
-export default interface props {}
-const fetchTags = create(CreateProductRequestSchema, {
-  tags: [],
-});
-export default function tag(props: props) {
+export type TagType = {
+  id?: bigint;
+  name?: string;
+  tag_group_id?: bigint;
+  disabled?: boolean;
+  onClick?: () => void;
+};
+export default function Tag(props: TagType) {
   return (
     <>
-      <button type="button" class={style.tag}>
+      <button
+        type="button"
+        onClick={props.onClick}
+        class={style.tag}
+        classList={{
+          [style.disabled]: props.disabled,
+        }}
+      >
         {props.name}
       </button>
     </>

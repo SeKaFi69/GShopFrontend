@@ -1,82 +1,132 @@
-import { create, toBinary } from "@bufbuild/protobuf";
-import { ProductSchema } from "../proto/proto/product/product_pb";
 import { CreateProductRequestSchema } from "../proto/proto/product/routes_pb";
+
 import style from "./AddProduct.module.css";
-import Tag from "../components/small/tag";
+import TagList from "../components/TagList";
+import { create, toBinary } from "@bufbuild/protobuf";
+import GroupList from "../components/GroupList";
+async function uploadImage(
+  name: string,
+  description: string,
+  image: File
+): Promise<bigint | null> {
+  const formData = new FormData();
+  formData.append("name1", name);
+  formData.append("description", description);
+  formData.append("file", image);
+  try {
+    const response = await fetch("/api/image/create", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: "R2FtaSB0byBmdXJyYXNHYW1pIHRvIGZ1cnJhc0dURiE=",
+      },
+    });
+    //Todo: response.json nie działa, powinnien oddać imageId
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    console.log("Image uploaded successfully", responseData);
+    return responseData.image_id;
+  } catch (error) {
+    console.error("Error uploading image:", error);
+
+    return null;
+  }
+}
 export default function AddProduct() {
-  fetch("loc");
+  const handleSubmit = async (e: Event) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get("name") as string | null;
+    const barcode = formData.get("barcode") as string | null;
+    const price = formData.get("price") as string | null;
+    const descriptionElement = form.querySelector(
+      "#description"
+    ) as HTMLElement;
+    const description =
+      descriptionElement?.textContent || "No description provided";
+    const image = formData.get("image") as File | null;
+    if (!name || !barcode || !price || !image) {
+      console.error("All fields are required");
+      return;
+    }
+    try {
+      const imageId = await uploadImage(name, description, image);
+      if (imageId === null) {
+        throw new Error("Image upload failed");
+      }
+      const data = create(CreateProductRequestSchema, {
+        products: [
+          {
+            name,
+            description,
+            barcode: BigInt(barcode),
+            price: Number.parseFloat(price),
+            imageId,
+          },
+        ],
+      });
+      const response = await fetch("/api/products/create", {
+        method: "POST",
+        body: toBinary(CreateProductRequestSchema, data),
+        headers: {
+          "Content-Type": "application/octet-stream",
+          Authorization: "R2FtaSB0byBmdXJyYXNHYW1pIHRvIGZ1cnJhc0dURiE=",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      console.log("Product data submitted successfully");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
-    <form
-      class={style.form}
-      method="post"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        const name = formData.get("name")?.toString();
-        const description = formData.get("description")?.toString();
-        // BigInt imageId = BigInt(formData.get("image")?.toString());
-        // if ((imageId = null)) {
-        //   throw "Image aa";
-        // }
-        const p = formData.get("price")?.toString();
-        if (p == null) {
-          throw "price aa";
-        }
-        const b = formData.get("barcode")?.toString();
-        if (b == null) {
-          throw "barcode aa";
-        }
-
-        const price = Number.parseFloat(p);
-        const barcode = BigInt(b);
-
-        const data = create(CreateProductRequestSchema, {
-          products: [
-            {
-              name,
-              description,
-              imageId,
-              barcode,
-              price,
-            },
-          ],
-        });
-        console.log(data);
-
-        fetch("http://localhost:8000/products/create", {
-          method: "post",
-          body: toBinary(CreateProductRequestSchema, data),
-        });
-      }}
-    >
+    <form class={style.form} method="post" onSubmit={handleSubmit}>
       <label for="name">
-        Nazwa produktu
-        <input type="text" name="name" title="Wpisz nazwę produktu" required />
+        <p>Nazwa</p>
+        <input
+          type="text"
+          name="name"
+          title="Wpisz nazwę produktu"
+          required
+          value="test"
+        />
       </label>
-      <label for="description">
-        Opis
-        <span contentEditable id="description" />
-      </label>
+
       <label for="image">
-        Zdjęcie
+        <p>Zdjęcie</p>
         <input type="file" name="image" />
       </label>
       <label for="barcode">
-        Kod kreskowy
+        <p> Kod kreskowy</p>
         <input
-          type="text"
+          type="number"
           name="barcode"
           title="Zeskanuj/Wpisz kod kreskowy"
           required
+          value={1234}
         />
       </label>
       <label for="price">
-        Cena
-        <input type="text" name="price" title="Cena [zł]" required />
+        <p>Cena</p>
+        <input
+          type="number"
+          name="price"
+          title="Cena [zł]"
+          required
+          value={1234}
+        />
       </label>
-      <div class={style.tagContainer}>
-        <Tag />
-      </div>
+      <label for="description">
+        <p>Opis</p>
+        <span contentEditable id="description" textContent="test test test" />
+      </label>
+      <TagList />
+      <GroupList />
       <button type="submit" title="Dodaj produkt">
         Dodaj
       </button>

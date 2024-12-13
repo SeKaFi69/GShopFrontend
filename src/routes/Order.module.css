@@ -42,7 +42,7 @@
   padding: 1rem;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-0);
+  gap: var(--space-3);
 
   border-radius: var(--radius-2);
   background: var(--primaryGradient);

@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  max-width: 500px;
+
   & > label {
     display: flex;
     justify-content: space-between;
@@ -9,17 +11,36 @@
     flex-wrap: wrap;
     width: 100%;
     gap: var(--space-2);
+
+    & > input {
+      width: 70%;
+      background-color: var(--bg1_Dark);
+      outline: var(--tertiary);
+      &:invalid {
+        outline-width: var(--error);
+      }
+    }
     & > span {
       outline: var(--primary);
       background-color: var(--bg1_Dark);
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       padding: var(--space-1) var(--space-2);
       transition: all 0.25s linear;
+      border-radius: 0.5em;
       &:active,
       &:focus {
         background-color: var(--bg2_Dark);
       }
     }
+  }
+  & > label > input:focus,
+  & > label > span:focus {
+    outline: 1px var(--tertiary) solid;
+    background-color: var(--bg2_Dark);
+    transition: all 1s;
+  }
+  & > button {
+    background-color: var(--secondary);
   }
 }

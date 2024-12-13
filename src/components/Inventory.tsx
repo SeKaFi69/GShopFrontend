@@ -5,12 +5,28 @@ import style from "./Inventory.module.css";
 import orderImg from "../assets/Order.png";
 import { handleRemove } from "./Cart";
 import { BiRegularPlus, BiRegularMinus } from "solid-icons/bi";
+import Tag from "./small/Tag";
 export default function Inventory() {
   const appContext = useAppContext()!;
-
+  const testProducts = fetch("/api/stock", {
+    method: "POST",
+    headers: { Authorization: "R2FtaSB0byBmdXJyYXNHYW1pIHRvIGZ1cnJhc0dURiE=" },
+  });
+  console.log(testProducts);
   appContext.inventory.setInventory([
-    { name: "Mleko", isHeatable: true, price: 2, amount: 10 },
-    { name: "Mleko2", price: 2.0, amount: 10 },
+    {
+      name: "Mleko",
+      isHeatable: true,
+      price: 2,
+      amount: 10,
+      tags: ["gazowane"],
+    },
+    {
+      name: "Mleko2",
+      price: 2.0,
+      amount: 10,
+      tags: ["gazowane", "250ml", "spermiszcze"],
+    },
     { name: "Mleko3", price: 2, amount: 10 },
     { name: "Mleko4", price: 2, amount: 10 },
     { name: "Mleko5", price: 2, amount: 10 },
@@ -19,39 +35,6 @@ export default function Inventory() {
     { name: "Mleko8", price: 2, amount: 10 },
     { name: "Mleko9", price: 2, amount: 10 },
     { name: "Mleko10", price: 2, amount: 10 },
-
-    { name: "Chleb", price: 3, amount: 10 },
-    { name: "Chleb2", price: 3, amount: 10 },
-    { name: "Chleb3", price: 3, amount: 10 },
-    { name: "Chleb4", price: 3, amount: 10 },
-    { name: "Chleb5", price: 3, amount: 10 },
-    { name: "Chleb6", price: 3, amount: 10 },
-    { name: "Chleb7", price: 3, amount: 10 },
-    { name: "Chleb8", price: 3, amount: 10 },
-    { name: "Chleb9", price: 3, amount: 10 },
-    { name: "Chleb10", price: 3, amount: 10 },
-
-    { name: "Jabłko", price: 1, amount: 10 },
-    { name: "Jabłko2", price: 1, amount: 10 },
-    { name: "Jabłko3", price: 1, amount: 10 },
-    { name: "Jabłko4", price: 1, amount: 10 },
-    { name: "Jabłko5", price: 1, amount: 10 },
-    { name: "Jabłko6", price: 1, amount: 10 },
-    { name: "Jabłko7", price: 1, amount: 10 },
-    { name: "Jabłko8", price: 1, amount: 10 },
-    { name: "Jabłko9", price: 1, amount: 10 },
-    { name: "Jabłko10", price: 1, amount: 10 },
-
-    { name: "Pomidor", price: 2, amount: 10 },
-    { name: "Pomidor2", price: 2, amount: 10 },
-    { name: "Pomidor3", price: 2, amount: 10 },
-    { name: "Pomidor4", price: 2, amount: 10 },
-    { name: "Pomidor5", price: 2, amount: 10 },
-    { name: "Pomidor6", price: 2, amount: 10 },
-    { name: "Pomidor7", price: 2, amount: 10 },
-    { name: "Pomidor8", price: 2, amount: 10 },
-    { name: "Pomidor9", price: 2, amount: 10 },
-    { name: "Pomidor10", price: 2, amount: 10 },
   ]);
 
   function handleAdd(name: string) {
@@ -86,37 +69,46 @@ export default function Inventory() {
   return (
     <ol class={style.inventoryContainer}>
       <Show when={appContext.inventory.inventory()}>
-        {appContext.inventory.inventory().map((product: Product) => (
-          <li>
-            <img src={orderImg} alt={product.name} />
+        {appContext.inventory
+          .inventory()
 
-            <span class={style.name}>{product.name}</span>
-            <span class={style.price}> {product.price.toPrecision(3)}</span>
-            <div class={style.buttonContainer}>
-              <Show
-                when={appContext.cart
-                  .cart()
-                  .filter((cartProduct) => cartProduct.name === product.name)
-                  .find((cartProduct) => (cartProduct.amount ?? 0) > 0)}
-              >
+          .map((product: Product) => (
+            <li>
+              <img src={orderImg} alt={product.name} />
+              <span class={style.name}>{product.name}</span>
+              <span class={style.price}> {product.price.toPrecision(3)}</span>
+              <ol class={style.tag}>
+                {product.tags?.map((tag) => (
+                  <li>
+                    <Tag name={tag} />
+                  </li>
+                ))}
+              </ol>
+              <div class={style.buttonContainer}>
+                <Show
+                  when={appContext.cart
+                    .cart()
+                    .filter((cartProduct) => cartProduct.name === product.name)
+                    .find((cartProduct) => (cartProduct.amount ?? 0) > 0)}
+                >
+                  <button
+                    type="button"
+                    title="Usuń"
+                    onClick={() => handleRemove(appContext, product.name)}
+                  >
+                    <BiRegularMinus />
+                  </button>
+                </Show>
                 <button
                   type="button"
-                  title="Usuń"
-                  onClick={() => handleRemove(appContext, product.name)}
+                  title="Dodaj"
+                  onclick={handleAdd(product.name)}
                 >
-                  <BiRegularMinus />
+                  <BiRegularPlus />
                 </button>
-              </Show>
-              <button
-                type="button"
-                title="Dodaj"
-                onclick={handleAdd(product.name)}
-              >
-                <BiRegularPlus />
-              </button>
-            </div>
-          </li>
-        ))}
+              </div>
+            </li>
+          ))}
       </Show>
     </ol>
   );

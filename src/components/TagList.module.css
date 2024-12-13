@@ -1,0 +1,11 @@
+.tagList {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 0.5em;
+
+  &.hide {
+    height: 2.75em;
+  }
+}
