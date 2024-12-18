@@ -1,4 +1,4 @@
-import { For, createSignal, onMount } from "solid-js";
+import { For, onMount } from "solid-js";
 
 import { fromBinary } from "@bufbuild/protobuf";
 import Tag from "./small/Tag";
@@ -38,7 +38,8 @@ export default function TagList() {
   });
 
   return (
-    <div class={style.tagList}>
+    <label class={style.tagList}>
+      <p>Tagi</p>
       <For each={tags}>
         {(e, i) => (
           <Tag
@@ -57,6 +58,6 @@ export default function TagList() {
           />
         )}
       </For>
-    </div>
+    </label>
   );
 }

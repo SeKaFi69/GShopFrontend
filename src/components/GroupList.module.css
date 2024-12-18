@@ -1,0 +1,10 @@
+.groupList {
+  & > input {
+  }
+  & > datalist {
+    display: none;
+    & > option > value {
+      display: none;
+    }
+  }
+}
